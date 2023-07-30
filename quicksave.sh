@@ -7,6 +7,12 @@ fi
 
 url=$1
 
+# Check if URL is valid
+if ! curl -I "$url" >/dev/null 2>&1; then
+    echo "Error: you have submitted an invalid URL, or the URL is not accessible."
+    exit 1
+fi
+
 # Extract filename from the URL
 filename=$(basename "$url")
 
